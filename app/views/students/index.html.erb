@@ -1,9 +1,65 @@
-<h1>Students Index</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <div class="container-fluid">
+    
+      <span class="navbar-brand mb-0 h1">CRUD APP</span>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+            <%= link_to 'Student Home', '/students', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Courses', '/courses', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
-<% @students.each do |student| %>
-    <%= link_to student.name, student_path(student) %><br>
-<% end %>
-<br>
-<br>
+<div class="card text-center">
+  <div class="card-header">
+    List of Students
+  </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Names</th>
+                <th scope="col">Profile Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @students.each do |student| %>
+                    <tr>
+                    <th scope="row"><%= student.id%></th>
+                    <td><%= student.name%></td>
+                    <td><%= link_to "Click Here", student_path(student) %>
+                    <br>
+                    </td>
+                    </tr>
+                <% end %>
+                
+            </tbody>
+        </table>
+        </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    <%= link_to 'Create New Student', '/students/new' , class:'btn btn-outline-primary' %>
+  </div>
+</div>
+<h3><%= @students.size%></h3>
 
-<%= link_to 'Create New Student', '/students/new' %>
+
+
+
+
+
+

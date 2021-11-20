@@ -1,0 +1,11 @@
+<h1>Course New Form</h1>
+
+
+
+<%= form_for @course do |f|%>
+    <%= f.label :name%>
+    <%= f.text_field :name%>
+    <%= f.submit%>
+<% end %>
+
+<%= link_to 'Back to All Courses', courses_path %>

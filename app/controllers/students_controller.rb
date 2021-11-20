@@ -16,10 +16,12 @@ class StudentsController < ApplicationController
   def create
     @student = Student.create(params.require(:student).permit(:name, :age))
     if @student.valid?
-      redirect_to :students => 'index'
+      redirect_to(students_path)
+      # redirect_to('/students/index')
     else
       flash[:errors] = @student.errors.full_messages
-      redirect_to :student => 'new'
+      redirect_to(new_student_path)
+      # redirect_to('/students/new')
     end
   end
 

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :students, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :enrollments, only: [:index, :new, :create, :destroy]
+  resources :courses, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   # get 'enrollments/index'
   # get 'enrollments/new'
   # get 'enrollments/create'
