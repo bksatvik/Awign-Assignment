@@ -1,2 +1,9 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<h1>Students Index</h1>
+
+<% @students.each do |student| %>
+    <%= link_to student.name, student_path(student) %><br>
+<% end %>
+<br>
+<br>
+
+<%= link_to 'Create New Student', '/students/new' %>

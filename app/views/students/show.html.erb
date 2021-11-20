@@ -1,2 +1,22 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<h1><%= @student.name%>'s Page</h1>
+
+<h2>Age: <%= @student.age%> </h2>
+
+<h2>Courses</h2>
+
+
+<ul>
+    <% @student.enrollments.each do |enrollment| %>
+        <li><%= enrollment.course.name %></;i>
+        <%= button_to "Delete Enrollment", enrollment_path(enrollment), method: :delete %>
+    <% end %>
+</ul>
+
+<%= button_to "Register to Course", new_enrollment_path, method: :get %>
+</br>
+<%= button_to "Edit Student", edit_student_path, method: :get %>
+</br>
+<%= button_to "Destroy Student", student_path, method: :delete %>
+</br>
+<%= link_to 'Back to All Students', students_path %>
+
