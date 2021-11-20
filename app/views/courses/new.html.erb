@@ -1,11 +1,55 @@
-<h1>Course New Form</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <div class="container-fluid">
+    
+      <span class="navbar-brand mb-0 h1">CRUD APP</span>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+            <%= link_to 'Student Home', '/students', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Courses', '/courses', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="card ">
+  <div class="card-header">
+    <h3>Enter the Details</h3>
+  </div>
+    
+    <div class="card-body">
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <p style="color:red" ><%= error%> </p>
+            
+        <% end %>
+    <% end %>
+    
+        <div>
+            <%= form_for @course do |f|%>
+            <%= f.label :name, class: 'form-label'%>
+            <%= f.text_field :name, class: 'form-control'%>
+            <br>
+            <%= f.submit class: 'btn btn-primary'%>
+            <% end %>
+        
+        </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    <%= link_to 'Go back', '/courses' , class:'btn btn-outline-primary' %>
+  </div>
+</div>
 
 
 
-<%= form_for @course do |f|%>
-    <%= f.label :name%>
-    <%= f.text_field :name%>
-    <%= f.submit%>
-<% end %>
-
-<%= link_to 'Back to All Courses', courses_path %>

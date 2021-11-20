@@ -1,10 +1,53 @@
-<%= render 'students/header' %>
-<h1>Student Edit Form</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <div class="container-fluid">
+    
+      <span class="navbar-brand mb-0 h1">CRUD APP</span>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+            <%= link_to 'Student Home', '/students', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Courses', '/courses', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
-<%= form_for @student do |f| %>
-    <%= f.label "Name" %>
-    <%= f.text_field :name %><br>
-    <%= f.label "Age" %>
-    <%= f.number_field :age %><br>
-    <%= f.submit "Save Changes" %>
-<% end %>
+<div class="card ">
+  <div class="card-header">
+    <h3>Update Details</h3>
+  </div>
+    
+    <div class="card-body">
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <p style="color:red" ><%= error%> </p>
+            
+        <% end %>
+    <% end %>
+    
+        <div>
+            <%= form_for @student do |f| %>
+                <%= f.label :name, class:'form-label'%>
+                <%= f.text_field :name, class:'form-control' %><br>
+                <%= f.label :age, class:'form-label' %>
+                <%= f.number_field :age, class:'form-control' %><br>
+                <%= f.submit  class:'btn btn-primary' %>
+            <% end %>
+        
+        </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+

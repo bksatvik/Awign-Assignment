@@ -1,23 +1,81 @@
-<%= render 'students/header' %>
-<h1><%= @student.name%>'s Page</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <div class="container-fluid">
+    
+      <span class="navbar-brand mb-0 h1">CRUD APP</span>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+            <%= link_to 'Student Home', '/students', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Courses', '/courses', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
-<h2>Age: <%= @student.age%> </h2>
-
-<h2>Courses</h2>
 
 
-<ul>
-    <% @student.enrollments.each do |enrollment| %>
-        <li><%= enrollment.course.name %></;i>
-        <%= button_to "Delete Enrollment", enrollment_path(enrollment), method: :delete %>
-    <% end %>
-</ul>
+<div class="card ">
+  <div class="card-header">
+    <h3><%= @student.name%>'s Details</h3>
+  </div>
+    <div class="card-body">
+    
+        <dl class="row">
+            <dt class="col-sm-3">Age -</dt>
+            <dd class="col-sm-9"><%= @student.age%></dd>
 
-<%= button_to "Register to Course", new_enrollment_path, method: :get %>
-</br>
-<%= button_to "Edit Student", edit_student_path, method: :get %>
-</br>
-<%= button_to "Destroy Student", student_path, method: :delete %>
-</br>
-<%= link_to 'Back to All Students', students_path %>
+            <dt class="col-sm-3">Courses -</dt>
+            <dd class="col-sm-9">
+                <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Names</th>
+                <th scope="col">Profile Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @student.enrollments.each do |enrollment| %>
+                    <tr>
+                    <th scope="row"><%= enrollment.course.id%></th>
+                    <td><%= enrollment.course.name %></td>
+                    <td><%= button_to "Delete Enrollment", enrollment_path(enrollment), method: :delete %>
+                    <br>
+                    </td>
+                    </tr>
+                <% end %>
+                
+            </tbody>
+        </table>
+            </dd>
+        </dl>
+        <%= button_to "Register to Course", new_enrollment_path, class: 'btn btn-primary',  method: :get %>
+        </br>
+        <%= button_to "Edit Student", edit_student_path, class: 'btn btn-primary', method: :get %>
+        </br>
+        <%= button_to "Destroy Student", student_path, class: 'btn btn-primary btn-danger', method: :delete %>
+        
+   
+        </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    <%= link_to 'Go back', '/students' , class:'btn btn-outline-primary ' %>
+  </div>
+</div>
+
+
+
+
+
 

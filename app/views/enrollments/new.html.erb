@@ -1,7 +1,57 @@
-<h1>Enrollment Form</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <div class="container-fluid">
+    
+      <span class="navbar-brand mb-0 h1">CRUD APP</span>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+            <%= link_to 'Student Home', '/students', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Courses', '/courses', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
-<%= form_for @enrollment do |f|%>
-    Student: <%= collection_select(:enrollment, :student_id, Student.all, :id, :name) %><br />
-    Course: <%= collection_select(:enrollment, :course_id, Course.all, :id, :name) %><br />
-  <%= f.submit %>
-<% end %>
+<div class="card ">
+  <div class="card-header">
+    <h3>Enter the Details</h3>
+  </div>
+    
+    <div class="card-body">
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <p style="color:red" ><%= error%> </p>
+            
+        <% end %>
+    <% end %>
+    
+        <div>
+            <%= form_for @enrollment do |f|%>
+            
+            Student: <%= collection_select(:enrollment, :student_id, Student.all, :id, :name, {class: 'btn btn-secondary dropdown-toggle'}) %><br />
+            <br>
+            Course: <%= collection_select(:enrollment, :course_id, Course.all, :id, :name) %><br />
+            <br>
+            <%= f.submit class:'btn btn-primary'%>
+            
+            <br>
+            
+        <% end %>
+        </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    
+  </div>
+</div>
+

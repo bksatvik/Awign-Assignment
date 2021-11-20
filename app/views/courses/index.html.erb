@@ -1,11 +1,67 @@
-<h1>Courses Index</h1>
 
-<% @courses.each do |course| %>
-    <h3><%=course.name %></h3>
-    <%= button_to "Delete Course", course_path(course), method: :delete %>
-    <br>
-<% end%>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <div class="container-fluid">
+    
+      <span class="navbar-brand mb-0 h1">CRUD APP</span>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+            <%= link_to 'Student Home', '/students', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Courses', '/courses', class:"nav-link" %>
+          <%# <a class="nav-link" href="#">Home</a> %>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
-<%= link_to 'Create New Course', '/courses/new' %>
-<br>
-<%= link_to 'Back to All Students', students_path %>
+<div class="card ">
+  <div class="card-header">
+    <h3>List of Courses</h3>
+  </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Names</th>
+                <th scope="col"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @courses.each do |course| %>
+                    <tr>
+                    <th scope="row"><%=course.id %></th>
+                    <td><%=course.name %></td>
+                    <td><%= button_to "Click to Delete", course_path(course), method: :delete %>
+                    <br>
+                    </td>
+                    </tr>
+                <% end %>
+                
+            </tbody>
+        </table>
+        <%= button_to 'Create New Course', '/courses/new', class:'btn btn-primary', method: :get%>
+        </div>
+    </div>
+    
+  </div>
+   
+  <div class="card-footer text-muted">
+    <%= link_to 'Go back', '/students' , class:'btn btn-outline-primary' %>
+  </div>
+ 
+</div>
+
+
+
+
+
