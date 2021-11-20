@@ -41,6 +41,10 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
 end
 
+group :development, :test do # <<<< :development, not devlopment
+  gem 'sqlite3'
+end
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
